@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
+use App\Models\Project;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,8 +28,15 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    $projects = Project::all();
+    return Inertia::render('Dashboard', compact('projects'));
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+//Projects
+Route::get('/editProject/{id}', [ProjectController::class, 'edit'])->middleware(['auth', 'verified'])->name('editproject');
+Route::get('/createProject', [ProjectController::class, 'create'])->middleware(['auth', 'verified'])->name('createproject');
+Route::delete('/deleteProject/{project}', [ProjectController::class, 'destroy'])->middleware(['auth', 'verified'])->name('deleteproject');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
