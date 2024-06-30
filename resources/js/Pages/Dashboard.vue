@@ -2,6 +2,7 @@
 import { defineProps } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+// const { delete: deleteProject } = useForm();
 const props = defineProps({
     projects: Array
 });
@@ -9,7 +10,7 @@ const props = defineProps({
 const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
 const csrfToken = csrfTokenMeta ? csrfTokenMeta.getAttribute('content') : '';
 
-// const { delete: deleteProject } = useForm();
+
 </script>
 
 <template>

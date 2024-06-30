@@ -1,50 +1,57 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
+import { Head} from '@inertiajs/vue3';
+import Header from './components/Header.vue';
+import AboutMe from './components/AboutMe.vue';
+import Divisor from './components/Divisor.vue';
 
-defineProps({
-    canLogin: {
-        type: Boolean,
-    },
-    canRegister: {
-        type: Boolean,
-    },
-    laravelVersion: {
+
+const props = defineProps({
+    aboutMeImageUrl: {
         type: String,
         required: true,
-    },
-    phpVersion: {
-        type: String,
-        required: true,
-    },
+    }
 });
+
 </script>
 
 <template>
+    <div id="page">
 
-    <Head title="Welcome" />
 
-    <div class="bg-slate-950 h-screen">
-        <div v-if="canLogin" class="sm:fixed sm:top-0 sm:right-0 p-6 text-end">
-            <Link v-if="$page.props.auth.user" :href="route('dashboard')"
-                class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm ">
-            Dashboard</Link>
+        <Head title="Welcome" />
+        <Header />
+        <AboutMe :aboutMeImageUrl="props.aboutMeImageUrl" />
+        <Divisor sectionName="Abilità"/>
+        
+        <div>
 
-            <template v-else>
-                <Link :href="route('login')"
-                    class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm">
-                Log in</Link>
 
-                <Link v-if="canRegister" :href="route('register')"
-                    class="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm">
-                Register</Link>
-            </template>
+            <div class="text-white sotto">
+                
+                <div>
+                    Lista progetti con titolo, descrizione, link ed immagini
+                </div>
+                <div>
+                    Elenco di skill conosciute
+                </div>
+                <div>
+                    in alto a destra nel header una serie di link che portano all'interno della pagina stessa
+                </div>
+                <div>
+                    contattami
+                </div>
+            </div>
         </div>
-
-        <div class="text-white">Welcome page</div>
     </div>
 </template>
 
 <style>
+.sotto {
+    padding-top: 5rem;
+}
 
+#page {
+    /* background-image: url('./images/background.webp'); funziona con l'altro comando */
+}
 
 </style>
