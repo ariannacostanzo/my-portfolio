@@ -1,40 +1,66 @@
-<script>
+<script setup>
+import { ref, onMounted, defineProps, onBeforeUnmount } from 'vue';
 import Divisor from './Divisor.vue';
-  export default {
-    name: 'AboutMe',
-    props: {
-      aboutMeImageUrl: {
-        type: String,
-        required: true,
-      },
-    },
-    data() {
-      return {
-        // serve un ciclo che itera su ogni lettera e la fa apparire e sparire
-        words: ['Web Developer', 'Gamer', 'Creator'],
-        currentIndex: 0,
-        currentWord: 'Developer',
-        showBounce1: false,
-        showBounce2: false,
+
+//data
+const words = ref(['Web Developer', 'Gamer', 'Creator', 'Geek']);
+let emptyText = ref('');
+const currentIndex = ref(0);
+let currentLetter = ref(0);
+const showBounce1 = ref(false);
+const showBounce2 = ref(false);
+let typingInterval;
+let switchingTimeout;
+let isDeleting = ref(false);
+
+//methods
+const startTyping = () => {
+  typingInterval = setInterval(() => {
+    //se non sono in cancellazione scrivo
+    if (!isDeleting.value) {
+      if (currentLetter.value < words.value[currentIndex.value].length) {
+        emptyText.value += words.value[currentIndex.value][currentLetter.value];
+        currentLetter.value++;
+      } else {
+        clearInterval(typingInterval);
+        switchingTimeout = setTimeout(() => {
+          isDeleting.value = true;
+          startTyping();
+        }, 1000); 
       }
-    },
-    components: {
-      Divisor
-    },
-    methods: {
-      changeWord() {
-        setInterval(() => {
-          this.currentIndex += 1;
-          if (this.currentIndex === this.words.length ) {
-            this.currentIndex = 0;
-          }
-        }, 2000)
+    } else { //altrimenti se non ho finito di cancellare cancello
+      if (currentLetter.value > 0) {
+        currentLetter.value--;
+        emptyText.value = words.value[currentIndex.value].substring(0, currentLetter.value);
+      } else {
+        clearInterval(typingInterval);
+        isDeleting.value = false;
+        currentIndex.value = (currentIndex.value + 1) % words.value.length;
+        switchingTimeout = setTimeout(() => {
+          startTyping();
+        }, 500); 
       }
-    },
-    mounted() {
-      this.changeWord()
     }
+  }, 200); 
+};
+
+
+//props
+const props = defineProps({
+  aboutMeImageUrl: {
+    type: String,
+    required: true
   }
+});
+
+onMounted(() => {
+  startTyping();
+});
+
+onBeforeUnmount(() => {
+  clearInterval(typingInterval);
+  clearTimeout(switchingTimeout);
+});
 </script>
 
 <template>
@@ -42,7 +68,7 @@ import Divisor from './Divisor.vue';
     <div class="writing-text container mx-auto my-10 flex justify-start gap-10">
       <div>
         Ciao, sono <span class="color-green">Arianna Costanzo</span> e
-        <h1>Sono una <span class="color-purple">{{ words[currentIndex] }}</span></h1>
+        <h1>sono una <span class="color-purple">{{ emptyText }}</span></h1>
       </div>
 
     </div>
@@ -123,6 +149,17 @@ import Divisor from './Divisor.vue';
 
     span {
       font-weight: bold;
+      position: relative;
+
+      &.color-purple::after {
+        position: absolute;
+        content: '';
+        top: 0;
+        right: -12px;
+        width: 10px;
+        height: 100%;
+        background-color: #ec4899;
+      }
     }
 
   }

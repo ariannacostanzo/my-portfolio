@@ -19,7 +19,9 @@
         "vue": "^3.4.0"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.5.2",
         "typed.js": "^2.1.0",
+        "vue-router": "^4.0.13",
         "vue-typed-js": "^0.1.2"
     }
 }

@@ -1,12 +1,14 @@
-<script>
-  export default {
-    name: 'Divisor',
-    props: {
-        sectionName: {
-            type: String,
-        },
-    },
-  }
+<script setup>
+import { defineProps } from 'vue';
+
+const props = defineProps({
+  sectionName: {
+    type: String,
+    required: true,
+  },
+  
+});
+
 </script>
 
 <template>
@@ -21,8 +23,7 @@
         border-radius: 2px;
         height: 1px;
         max-width: 80%;
-        margin: 0 auto;
-        margin-top: 8rem;
+        margin: 8rem auto;
         box-shadow: 0 0 10px #ec489a50;
         position: relative;
     }

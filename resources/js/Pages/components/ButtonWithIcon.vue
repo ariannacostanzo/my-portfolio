@@ -1,14 +1,12 @@
-<script>
-  export default {
-    name: 'ButtonWithIcon'
-  }
+<script setup>
+import { defineProps } from 'vue';
+const props = defineProps({
+    label: String
+});
 </script>
 
 <template>
-    <button @mouseover="showBounce = true" @mouseleave="showBounce = false">Contattami
-        <i v-show="!showBounce" class="fa-solid fa-id-card-clip"></i>
-        <i v-show="showBounce" class="fa-solid fa-id-card-clip fa-bounce"></i>
-    </button>
+    <button >{{ label }}</button>
 </template>
 
 <style lang='scss' scoped>

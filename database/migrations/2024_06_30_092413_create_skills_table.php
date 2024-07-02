@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
             $table->string('name', 80);
-            // $table->file('image', 80);
+            $table->string('image_path')->nullable();
             $table->timestamps();
         });
     }

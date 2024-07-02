@@ -1,37 +1,41 @@
-<script>
-  
-export default {
-    name: 'Header',
-  data() {
-    return {
-      scrolled: false
-    };
-    
-  },
-  methods: {
-    handleScroll() {
-      this.scrolled = window.scrollY > 70;
-    }
-  },
-  mounted() {
-    window.addEventListener('scroll', this.handleScroll)
-  },
-}
+<script setup>
+import { ref, onMounted } from 'vue';
+import { Link } from '@inertiajs/vue3';
+
+const scrolled = ref(false);
+
+const handleScroll = () => {
+  scrolled.value = window.scrollY > 70;
+};
+
+const scrollToSection = (sectionId) => {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+
 </script>
 
 <template>
   <header :class="{ 'header-scrolled': scrolled }">
     <div class="container flex justify-between">
       <div class="logo color-green">
-        &lt;/arianna &gt;
+        <Link :href="route('welcome')">&lt;/arianna &gt;</Link>
+
         <!-- fare qualche effetto che se ci passo sopra si colora a pezzo -->
       </div>
       <div>
         <ul class="flex gap-7 nav-links">
           <!-- fare effetti on hover  -->
-          <li>About me</li>
-          <li>Abilità</li>
-          <li>Progetti</li>
+          <li><a href="#about-me" @click.prevent="scrollToSection('about-me')">About me</a></li>
+          <li><a href="#skills" @click.prevent="scrollToSection('skills')">Abilità</a></li>
+          <li><a href="#projects" @click.prevent="scrollToSection('projects')">Progetti</a></li>
         </ul>
       </div>
     </div>
