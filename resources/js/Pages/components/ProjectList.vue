@@ -48,38 +48,48 @@ const getFirstImage = (project) => {
 </template>
 
 <style lang='scss' scoped>
-  .project-card {
-    background-color: #201844;
-    border-image-slice: 1;
-    border-width: 1px;
-    height: 340px;
-    width: 400px;
-    border-image-source: linear-gradient(to top, rgba(128, 128, 128, 0.342), rgba(128, 128, 128, 0.342) 45%, #ec4899 100%);
-  }
+.project-card {
+background-color: #201844;
+border-image-slice: 1;
+border-width: 1px;
+height: 340px;
+width: 400px;
+border-image-source: linear-gradient(to top, rgba(128, 128, 128, 0.342), rgba(128, 128, 128, 0.342) 45%, #ec4899 100%);
+}
 
-  .project-image {
-    height: 200px;
+.project-image {
+height: 200px;
+width: 100%;
+background-color: grey;
+overflow: hidden;
+cursor: pointer;
+
+
+
+}
+
+.project-image img {
+    transition: .5s ease;
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
     width: 100%;
-    background-color: grey;
-    overflow: hidden;
 
-    img {
-        transition: .3s ease;
+    &:hover {
+            scale: 1.3;
     }
+}
 
-    img:hover {
-        scale: 1.3;
-    }
-  }
 
-  .project-info {
-    padding: 1rem;
 
-    h3 {
-        font-size: 25px;
-        font-weight: bold;
-        text-align: center;
-    }
+.project-info {
+padding: 1rem;
 
-  }
+h3 {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+}
 </style>

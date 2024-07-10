@@ -12,6 +12,7 @@ const showBounce2 = ref(false);
 let typingInterval;
 let switchingTimeout;
 let isDeleting = ref(false);
+const cvLink = ref('/cv_Arianna_Costanzo.pdf');
 
 //methods
 const startTyping = () => {
@@ -77,11 +78,11 @@ onBeforeUnmount(() => {
   <Divisor sectionName="About Me" />
 
   <section id="about-me">
-    <div class="container mx-auto my-10 flex justify-center gap-10">
+    <div class="container mx-auto my-10 flex flex-col md:flex-row justify-center gap-10">
       <figure>
-        <img :src="aboutMeImageUrl" alt="about me" id="aboutme-img">
+        <img :src="aboutMeImageUrl" alt="about me" id="aboutme-img" class="w-full max-w-xs md:max-w-md">
       </figure>
-      <div class="info-about-me">
+      <div class="info-about-me max-w-xl">
         <!-- da sistemare il responsive del testo -->
         <h3 class="color-green">Junior Full Stack Web Developer</h3>
         <p> Nel corso della mia esperienza formativa all'estero, ho intrapreso
@@ -96,21 +97,29 @@ onBeforeUnmount(() => {
           e successivamente sono stata selezionata per il corso di <span class="color-purple">Experis su Java</span> da
           sistemare
         </p>
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between py-5">
 
-          <div class="icons-container ">
-            <i class="fa-brands fa-linkedin color-purple"></i>
-            <i class="fa-brands fa-square-github color-purple"></i>
+          <div class="icons-container pr-5">
+            <a href="https://www.linkedin.com/in/arianna-costanzo-6267a0233/">
+              <i class="fa-brands fa-linkedin color-purple"></i>
+            </a>
+            <a href="https://github.com/ariannacostanzo">
+              <i class="fa-brands fa-square-github color-purple"></i>
+            </a>
           </div>
 
-          <div class="buttons-container">
-            <button @mouseover="showBounce1 = true" @mouseleave="showBounce1 = false">Contattami
+          <div class="buttons-container flex flex-col md:flex-row gap-4">
+            <a href="mailto:costanzo.arianna@outlook.it" @mouseover="showBounce1 = true"
+              @mouseleave="showBounce1 = false">Contattami
               <i v-show="!showBounce1" class="fa-solid fa-id-card-clip"></i>
               <i v-show="showBounce1" class="fa-solid fa-id-card-clip fa-bounce"></i>
-            </button>
-            <button @mouseover="showBounce2 = true" @mouseleave="showBounce2 = false">Scarica CV
-              <i v-show="!showBounce2" class="fa-solid fa-download"></i>
-              <i v-show="showBounce2" class="fa-solid fa-download fa-bounce"></i></button>
+            </a>
+            <a :href="cvLink" download>
+
+              <button @mouseover="showBounce2 = true" @mouseleave="showBounce2 = false">Scarica CV
+                <i v-show="!showBounce2" class="fa-solid fa-download"></i>
+                <i v-show="showBounce2" class="fa-solid fa-download fa-bounce"></i></button>
+            </a>
           </div>
         </div>
       </div>
@@ -143,8 +152,14 @@ onBeforeUnmount(() => {
     max-width: 800px;
 
     h1 {
-      font-size: 60px;
+      font-size: 40px;
         font-weight: bold;
+    }
+
+    @media screen and (min-width: 760px) {
+      h1 {
+          font-size: 60px;
+        }
     }
 
     span {
@@ -191,7 +206,7 @@ onBeforeUnmount(() => {
 
   .buttons-container {
 
-    button {
+    a {
       background: rgb(236, 72, 153);
       background: linear-gradient(90deg, rgba(236, 72, 153, 1) 0%, rgba(38, 28, 82, 1) 100%);
       margin: 10px 10px 10px 0;

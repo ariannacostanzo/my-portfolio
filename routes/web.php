@@ -31,7 +31,7 @@ Route::get('/', function () {
 
 // Route::inertia('projectDetailPage', 'ProjectDetailPage')->name('projectDetail');
 
-
+//quello giusto
 Route::get('projectDetailPage/{id}', function ($id) {
     $project = Project::with('images')->findOrFail($id);
     return Inertia::render('ProjectDetailPage', [
@@ -39,6 +39,7 @@ Route::get('projectDetailPage/{id}', function ($id) {
     ]);
 
 })->name('projectDetail');
+
 
 // Route::resource('projects', ProjectController::class);
 

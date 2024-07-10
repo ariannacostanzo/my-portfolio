@@ -33,7 +33,10 @@ class ImageSeeder extends Seeder
                 'image_path' => 'images/Projects/pixel-art/pixel-art (6).png'
             ],
             [
-                'image_path' => 'images/Projects/whatsapp/whatsapp (1).png'
+                'image_path' => 'images/Projects/pixel-art/pixel-art (7).png'
+            ],
+            [
+                'image_path' => 'images/Projects/pixel-art/pixel-art (8).png'
             ],
             [
                 'image_path' => 'images/Projects/whatsapp/whatsapp (2).png'

@@ -5,6 +5,7 @@ import AboutMe from './components/AboutMe.vue';
 import Divisor from './components/Divisor.vue';
 import SkillsList from './components/SkillsList.vue';
 import ProjectList from './components/ProjectList.vue';
+import ContactMe from './components/ContactMe.vue';
 
 
 const props = defineProps({
@@ -40,33 +41,14 @@ const props = defineProps({
         </section>
         <section id="projects">
             <Divisor sectionName="Progetti" />
-            <ProjectList :projects="projects"/>
-        
+            <ProjectList :projects="projects" />
+
         </section>
-        <div>
-
-
-
-            <div class="text-white sotto">
-
-
-                
-                
-                <div>
-                    Lista progetti con titolo, descrizione, link ed immagini
-                </div>
-
-                <div>
-                    fare il componente button con la logica li
-                </div>
-                <div>
-                    contattami
-                </div>
-                <div>
-                    da sistemare il responsive nel testo di about me, e nelle freccie e carosello più bello
-                </div>
-            </div>
-        </div>
+        <section id="contact-me" class="pb-10">
+            <Divisor sectionName="Contattami" />
+            <ContactMe></ContactMe>
+        </section>
+        
     </div>
 </template>
 
@@ -78,6 +60,9 @@ const props = defineProps({
     padding-top: 2rem;
 }
 #projects {
+    padding-top: 2rem;
+}
+#contact-me {
     padding-top: 2rem;
 }
 
