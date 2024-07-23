@@ -7,7 +7,9 @@ use App\Models\Skill;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\ContactFormController;
 
+Route::post('/contact', [ContactFormController::class, 'send']);
 /*
 |--------------------------------------------------------------------------
 | Web Routes

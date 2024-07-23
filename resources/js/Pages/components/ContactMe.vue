@@ -1,5 +1,30 @@
 <script setup>
 import ButtonWithIcon from './ButtonWithIcon.vue';
+import { ref } from 'vue';
+import { Inertia } from '@inertiajs/inertia';
+
+const form = ref({
+    name: '',
+    email: '',
+    message: '',
+});
+
+const successMessage = ref('Email inviata con successo!');
+const showMessage = ref(false);
+
+const submitForm = () => {
+    Inertia.post('/contact', form.value, {
+        onSuccess: () => {
+            showMessage.value = true;
+            form.value.name = '';
+            form.value.email = '';
+            form.value.message = '';
+        },
+        onError: (error) => {
+            console.error('Error sending email:', error);
+        }
+    });
+};
 
 </script>
 
@@ -7,7 +32,7 @@ import ButtonWithIcon from './ButtonWithIcon.vue';
 
     <div class="container mx-auto lg:flex gap-5">
         <div class="left-content flex justify-end mb-5">
-            <form class="email-form">
+            <form class="email-form" @submit.prevent="submitForm">
                 <div class="flex items-center justify-center mb-10">
                     <p>Mi piacerebbe sentire la tua opinione! Se hai una domanda, un progetto in mente o vuoi
                         semplicemente
@@ -18,24 +43,30 @@ import ButtonWithIcon from './ButtonWithIcon.vue';
                     <div class="mb-3 flex justify-start">
                         <label for="name">Il tuo nome</label>
                     </div>
-                    <input type="text" name="name">
+                    <input v-model="form.name" type="text" name="name" required>
                 </div>
                 <div class="mb-3">
                     <div class="mb-3 flex justify-start">
                         <label for="email">La tua email</label>
                     </div>
-                    <input type="email" name="email">
+                    <input v-model="form.email" type="email" name="email" required>
                 </div>
                 <div class="mb-3">
                     <div class="mb-3 flex justify-start">
                         <label for="message">Il tuo messaggio</label>
                     </div>
-                    <textarea name="message" rows="6"></textarea>
+                    <textarea v-model="form.message" name="message" rows="6"></textarea>
                 </div>
                 <div class="flex justify-center">
-                    <ButtonWithIcon label="Invia" />
+                    <button type="submit">
+                        <ButtonWithIcon label="Invia" />
+                    </button>
                 </div>
+                <div v-show="showMessage" class="mt-4 color-purple">
+                {{ successMessage }}
+            </div>
             </form>
+            
         </div>
         <div class="right-content">
 
