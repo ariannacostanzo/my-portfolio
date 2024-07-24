@@ -1,35 +1,46 @@
-<script setup>
-import ButtonWithIcon from './ButtonWithIcon.vue';
-import { ref } from 'vue';
-import { Inertia } from '@inertiajs/inertia';
 
-const form = ref({
-    name: '',
-    email: '',
-    message: '',
+<script setup>
+import { ref, computed, watch } from 'vue';
+import { Inertia } from '@inertiajs/inertia';
+import { usePage } from '@inertiajs/inertia-vue3';
+import ButtonWithIcon from './ButtonWithIcon.vue';
+import { defineProps } from 'vue';
+
+defineProps({
+    flash: Object
 });
 
-const successMessage = ref('Email inviata con successo!');
-const showMessage = ref(false);
+const form = ref({
+  name: '',
+  email: '',
+  message: '',
+});
+
+
+const isLoading = ref(false);
 
 const submitForm = () => {
-    Inertia.post('/contact', form.value, {
-        onSuccess: () => {
-            showMessage.value = true;
-            form.value.name = '';
-            form.value.email = '';
-            form.value.message = '';
-        },
-        onError: (error) => {
-            console.error('Error sending email:', error);
-        }
-    });
+    isLoading.value = true;
+  Inertia.post('/contact', form.value, {
+    onSuccess: () => {
+        isLoading.value = false;
+      form.value.name = '';
+      form.value.email = '';
+      form.value.message = '';
+    },
+    onError: (error) => {
+        isLoading.value = false;
+      console.error('Error sending email:', error);
+    }
+  });
 };
-
 </script>
 
 <template>
 
+    <div id="loader" v-show="isLoading">
+        <i class="fa-solid fa-spinner fa-spin color-purple"></i>
+    </div>
     <div class="container mx-auto lg:flex gap-5">
         <div class="left-content flex justify-end mb-5">
             <form class="email-form" @submit.prevent="submitForm">
@@ -62,26 +73,27 @@ const submitForm = () => {
                         <ButtonWithIcon label="Invia" />
                     </button>
                 </div>
-                <div v-show="showMessage" class="mt-4 color-purple">
-                {{ successMessage }}
-            </div>
+                
+                <div v-show="flash" class="pt-7 color-purple">
+                    {{ flash.success }}
+                </div>
             </form>
-            
+
         </div>
         <div class="right-content">
 
 
-            <div class="text-end">
+            <div class="text-center lg:text-end">
                 <h4 class="color-green md-5 ">Email</h4>
                 <a href="mailto:costanzo.arianna@outlook.it">costanzo.arianna@outlook.it</a>
             </div>
-            <div class="text-end">
+            <div class="text-center lg:text-end">
                 <h4 class="color-green my-5">Numero di telefono</h4>
                 <p>(+39) 3274436674</p>
             </div>
-            <div class="text-end">
+            <div class="text-center lg:text-end">
                 <h4 class="color-green my-5">Indirizzo</h4>
-                <div class="flex justify-end">
+                <div class="flex justify-center lg:justify-end">
 
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101303.19542571901!2d14.995117417087291!3d37.49081874567513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1313e2dd761525b5%3A0x58fe876151c83cf0!2sCatania%20CT!5e0!3m2!1sit!2sit!4v1720219451525!5m2!1sit!2sit"
@@ -89,7 +101,7 @@ const submitForm = () => {
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
-            <div class="text-end">
+            <div class="text-center lg:text-end">
                 <h4 class="color-green my-5"> Social</h4>
                 <div class="icons-container ">
                     <a href="https://www.linkedin.com/in/arianna-costanzo-6267a0233/">
@@ -112,6 +124,20 @@ const submitForm = () => {
 </template>
 
 <style lang='scss' scoped>
+
+#loader {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
   h4 {
     font-weight: bold;
     font-size: 30px;
@@ -154,6 +180,14 @@ const submitForm = () => {
     border: 1px solid rgba(128, 128, 128, 0.342);
     border-radius: 10px;
     padding: 1rem;
-    height: 70%;
+    
+  }
+
+  @media screen and (min-width: 1024px) {
+    .email-form {
+        height: 80%;
+    }
   }
 </style>
+
+<!-- sistemare il flash message  -->

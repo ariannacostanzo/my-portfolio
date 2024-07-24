@@ -19,6 +19,6 @@ class ContactFormController extends Controller
 
         Mail::to($recipient)->send(new ContactFormMail($details));
 
-        return redirect()->back()->with('success', 'Email inviata correttamente!');
+        return redirect()->back()->with('success', 'Email inviata! Grazie per avermi contattata!');
     }
 }

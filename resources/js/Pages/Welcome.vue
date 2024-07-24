@@ -6,7 +6,7 @@ import Divisor from './components/Divisor.vue';
 import SkillsList from './components/SkillsList.vue';
 import ProjectList from './components/ProjectList.vue';
 import ContactMe from './components/ContactMe.vue';
-
+import { usePage } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
     aboutMeImageUrl: {
@@ -21,8 +21,15 @@ const props = defineProps({
     projects: {
         type: Array,
         required: true
-    }
+    },
+    flash: {
+        type: Object,
+        required: false,
+    },
 });
+
+const { props: inertiaProps } = usePage();
+console.log(inertiaProps.flash);
 
 </script>
 
@@ -46,7 +53,7 @@ const props = defineProps({
         </section>
         <section id="contact-me" class="pb-10">
             <Divisor sectionName="Contattami" />
-            <ContactMe></ContactMe>
+            <ContactMe :flash="flash"></ContactMe>
         </section>
         
     </div>

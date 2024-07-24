@@ -3,7 +3,7 @@ import { ref, onMounted, defineProps, onBeforeUnmount } from 'vue';
 import Divisor from './Divisor.vue';
 
 //data
-const words = ref(['Web Developer', 'Gamer', 'Creator', 'Geek']);
+const words = ref(['Sviluppatrice', 'Gamer', 'Creator', 'JuniorDeveloper']);
 let emptyText = ref('');
 const currentIndex = ref(0);
 let currentLetter = ref(0);
@@ -85,17 +85,12 @@ onBeforeUnmount(() => {
       <div class="info-about-me max-w-xl">
         <!-- da sistemare il responsive del testo -->
         <h3 class="color-green">Junior Full Stack Web Developer</h3>
-        <p> Nel corso della mia esperienza formativa all'estero, ho intrapreso
-          lo studio della programmazione spinta dalla mia curiosità iniziale
-          nel settore della programmazione dei videogiochi. Tuttavia, è stato
-          durante questo percorso che ho scoperto una passione autentica
-          per lo <span class="color-purple">sviluppo web</span>. La soddisfazione nel creare e dare vita a
-          progetti attraverso il processo di sviluppo ha risvegliato in me una
-          chiara consapevolezza della direzione che desideravo prendere nel
-          mio percorso professionale. Ho conseguito il corso da full Stack Web Developer di <span
-            class="color-purple">Boolean</span>
-          e successivamente sono stata selezionata per il corso di <span class="color-purple">Experis su Java</span> da
-          sistemare
+        <p> Durante la mia esperienza formativa all'estero, ho iniziato a studiare programmazione spinta dalla curiosità
+          per i videogiochi, scoprendo presto una vera passione per lo <span class="color-purple">sviluppo web</span>.
+          La soddisfazione di creare progetti mi ha chiarito la direzione del mio percorso professionale. Ho completato
+          il corso da full Stack Web Developer di <span class="color-purple">Boolean</span> e sono stata selezionata per
+          il corso di <span class="color-purple">Experis su Java</span>. Ora, con entusiasmo e dedizione, sono pronta a
+          mettere in pratica le mie competenze, affrontare nuove sfide e crescere in un ambiente lavorativo dinamico.
         </p>
         <div class="flex items-center justify-between py-5">
 
@@ -109,12 +104,12 @@ onBeforeUnmount(() => {
           </div>
 
           <div class="buttons-container flex flex-col md:flex-row gap-4">
-            <a href="mailto:costanzo.arianna@outlook.it" @mouseover="showBounce1 = true"
+            <a href="mailto:costanzo.arianna@outlook.it" @mouseover="showBounce1 = true" class="text-center"
               @mouseleave="showBounce1 = false">Contattami
               <i v-show="!showBounce1" class="fa-solid fa-id-card-clip"></i>
               <i v-show="showBounce1" class="fa-solid fa-id-card-clip fa-bounce"></i>
             </a>
-            <a :href="cvLink" download>
+            <a :href="cvLink" download class="text-center">
 
               <button @mouseover="showBounce2 = true" @mouseleave="showBounce2 = false">Scarica CV
                 <i v-show="!showBounce2" class="fa-solid fa-download"></i>

@@ -7,11 +7,8 @@ defineProps({
 });
 
 const getShortDescription = (text) => {
-    const maxLength = 100;
-    if (text.length >= maxLength) {
-        return text.substring(0, maxLength) + '...'
-    }
-    return text;
+    const maxLength = 139;
+    return text.substring(0, maxLength) + '...';
 } 
 
 const getFirstImage = (project) => {
@@ -29,7 +26,6 @@ const getFirstImage = (project) => {
 
             <li v-for="project in projects" :key="project.id" class="project-card">
                 <figure class="project-image">
-                    <!-- <img v-for="image in project.images" :key="image.id" :src="`${image.image_path}`" :alt="`${project.name}`"> -->
                     <img :src="getFirstImage(project)" :alt="`${project.name}`">
                 </figure>
                 <Link :href="route('projectDetail', { id: project.id })">
