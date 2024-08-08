@@ -7,7 +7,7 @@ defineProps({
 });
 
 const getShortDescription = (text) => {
-    const maxLength = 139;
+    const maxLength = 110;
     return text.substring(0, maxLength) + '...';
 } 
 

@@ -9,11 +9,22 @@ const handleScroll = () => {
   scrolled.value = window.scrollY > 70;
 };
 
+const isHomeRoute = () => {
+  if(route().current() === "welcome") {
+    return true
+  }
+  return false
+}
 
-const scrollToSection = (sectionId) => {
+
+const scrollToSection = (sectionId, command) => {
   const section = document.getElementById(sectionId);
   if (section) {
     section.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  if (command === 'close') {
+    toggleHamburger();
   }
 };
 
@@ -34,9 +45,11 @@ onMounted(() => {
       <div class="logo color-green">
         <Link :href="route('welcome')">&lt;/arianna &gt;</Link>
 
-        <!-- fare qualche effetto che se ci passo sopra si colora a pezzo -->
       </div>
-      <div>
+      <!-- se non siamo in welcome non si vede -->
+
+      
+      <div v-if="isHomeRoute()">
         <!-- hamburger menu  -->
         <div id="hamburger-menu" class="md:hidden" @click="toggleHamburger">
           <div class="arrow"></div>
@@ -48,20 +61,22 @@ onMounted(() => {
           <div id="close-btn" @click="toggleHamburger"><i class="fa-solid fa-xmark"></i></div>
           <div class="line-divisor"></div>
           <ul class="nav-links pl-3">
-            <li class="mb-3"><a href="#about-me" @click.prevent="scrollToSection('about-me')">About me</a></li>
-            <li class="mb-3"><a href="#skills" @click.prevent="scrollToSection('skills')">Abilità</a></li>
-            <li class="mb-3"><a href="#projects" @click.prevent="scrollToSection('projects')">Progetti</a></li>
-            <li class="mb-3"><a href="#contact-me" @click.prevent="scrollToSection('contact-me')">Contattami</a></li>
+            <li class="mb-3"><a href="#about-me" @click.prevent="scrollToSection('about-me', 'close')">Su di me</a></li>
+            <li class="mb-3"><a href="#skills" @click.prevent="scrollToSection('skills', 'close')">Abilità</a></li>
+            <li class="mb-3"><a href="#projects" @click.prevent="scrollToSection('projects', 'close')">Progetti</a></li>
+            <li class="mb-3"><a href="#contact-me" @click.prevent="scrollToSection('contact-me', 'close')">Contattami</a></li>
           </ul>
         </div>
         <!-- lista normale -->
         <ul class="hidden md:flex gap-7 nav-links">
-          <li><a href="#about-me" @click.prevent="scrollToSection('about-me')">About me</a></li>
-          <li><a href="#skills" @click.prevent="scrollToSection('skills')">Abilità</a></li>
-          <li><a href="#projects" @click.prevent="scrollToSection('projects')">Progetti</a></li>
-          <li><a href="#contact-me" @click.prevent="scrollToSection('contact-me')">Contattami</a></li>
+          <li><a href="#about-me" @click.prevent="scrollToSection('about-me', '')">Su di me</a></li>
+          <li><a href="#skills" @click.prevent="scrollToSection('skills', '')">Abilità</a></li>
+          <li><a href="#projects" @click.prevent="scrollToSection('projects', '')">Progetti</a></li>
+          <li><a href="#contact-me" @click.prevent="scrollToSection('contact-me', '')">Contattami</a></li>
         </ul>
       </div>
+
+
     </div>
   </header>
 </template>

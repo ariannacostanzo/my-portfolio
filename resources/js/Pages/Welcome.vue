@@ -29,7 +29,6 @@ const props = defineProps({
 });
 
 const { props: inertiaProps } = usePage();
-console.log(inertiaProps.flash);
 
 </script>
 
@@ -78,3 +77,5 @@ console.log(inertiaProps.flash);
 }
 
 </style>
+
+<!-- tag tecnologie  -->

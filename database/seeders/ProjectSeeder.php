@@ -87,6 +87,23 @@ class ProjectSeeder extends Seeder
                 'link' => 'https://github.com/ariannacostanzo/laravel-dc-comics',
                 'image_key' => 'dc-comics'
             ],
+            [
+                'name' => 'Progetti in Python',
+                'description' => 'Vari progetti con cui mi sono divertita a programmare in <span class="color-purple">Python</span>:
+                <br><br>Un <span class="color-purple">gioco a quiz</span> su Game of Thrones dove si deve riconoscere il personaggio dal nome mostrato. L\'obbiettivo è fare più punti possibili e superare il tuo punteggio migliore;
+                <br><br> Un <span class="color-purple">gioco a livelli</span>, in cui il giocatore si muove in avanti, evitando i nemici, per raggiungere il tesoro e passare al prossimo livello. Ogni livello successivo i nemici si muoveranno più velocemente oppure aumenteranno di numero;
+                <br><br> Ed infine una <span class="color-purple">calcolatrice</span> che può eseguire operazioni matematiche elementari o più complesse.',
+                'is_visible' => 1,
+                'link' => 'https://github.com/ariannacostanzo/laravel-dc-comics',
+                'image_key' => 'progetti-in-python'
+            ],
+            [
+                'name' => 'Spotify',
+                'description' => 'Un\'imitazione di Spotify sviluppata in <span class="color-purple">HTML e CSS</span> puro. Questa applicazione è puramente una vetrina, progettata per mostrare le potenzialità del design web senza l\'uso di JavaScript o backend. Gli utenti possono esplorare un layout simile a quello di Spotify, completo di sezioni per artisti, album e playlist. Il design è stato realizzato con grande attenzione ai dettagli per creare un\'esperienza visivamente accattivante e moderna, utilizzando esclusivamente HTML e CSS per la struttura e la presentazione. ',
+                'is_visible' => 1,
+                'link' => 'https://github.com/ariannacostanzo/laravel-dc-comics',
+                'image_key' => 'spotify'
+            ],
         ];
 
         foreach($projects as $project) {

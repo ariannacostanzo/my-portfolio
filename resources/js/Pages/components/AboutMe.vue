@@ -75,48 +75,58 @@ onBeforeUnmount(() => {
     </div>
   </section>
 
-  <Divisor sectionName="About Me" />
+  <Divisor sectionName="Su di me" />
 
   <section id="about-me">
-    <div class="container mx-auto my-10 flex flex-col md:flex-row justify-center gap-10">
-      <figure>
-        <img :src="aboutMeImageUrl" alt="about me" id="aboutme-img" class="w-full max-w-xs md:max-w-md">
-      </figure>
-      <div class="info-about-me max-w-xl">
-        <!-- da sistemare il responsive del testo -->
-        <h3 class="color-green">Junior Full Stack Web Developer</h3>
-        <p> Durante la mia esperienza formativa all'estero, ho iniziato a studiare programmazione spinta dalla curiosità
-          per i videogiochi, scoprendo presto una vera passione per lo <span class="color-purple">sviluppo web</span>.
-          La soddisfazione di creare progetti mi ha chiarito la direzione del mio percorso professionale. Ho completato
-          il corso da full Stack Web Developer di <span class="color-purple">Boolean</span> e sono stata selezionata per
-          il corso di <span class="color-purple">Experis su Java</span>. Ora, con entusiasmo e dedizione, sono pronta a
-          mettere in pratica le mie competenze, affrontare nuove sfide e crescere in un ambiente lavorativo dinamico.
-        </p>
-        <div class="flex items-center justify-between py-5">
+    <div class="container mx-auto my-10 flex justify-center">
+      <div>
 
-          <div class="icons-container pr-5">
-            <a href="https://www.linkedin.com/in/arianna-costanzo-6267a0233/">
-              <i class="fa-brands fa-linkedin color-purple"></i>
-            </a>
-            <a href="https://github.com/ariannacostanzo">
-              <i class="fa-brands fa-square-github color-purple"></i>
-            </a>
-          </div>
 
-          <div class="buttons-container flex flex-col md:flex-row gap-4">
-            <a href="mailto:costanzo.arianna@outlook.it" @mouseover="showBounce1 = true" class="text-center"
-              @mouseleave="showBounce1 = false">Contattami
-              <i v-show="!showBounce1" class="fa-solid fa-id-card-clip"></i>
-              <i v-show="showBounce1" class="fa-solid fa-id-card-clip fa-bounce"></i>
-            </a>
-            <a :href="cvLink" download class="text-center">
+        <div class="mb-2 md:mr-5 flex justify-center items-center md:float-left">
+          <img :src="aboutMeImageUrl" alt="about me" id="aboutme-img" class="w-52 ">
+        </div>
+        <div class="info-about-me max-w-xl text-center md:text-start">
+          <!-- da sistemare il responsive del testo -->
+          <h3 class="color-green">Junior Full Stack Web Developer</h3>
+          <p> Durante la mia esperienza formativa all'estero, ho iniziato a studiare programmazione spinta dalla
+            mia curiosità iniziale nel settore della programmazione dei videogiochi, scoprendo in seguito una vera
+            passione per lo <span class="color-purple">sviluppo web</span>.
+            La soddisfazione nel creare e dare vita a
+            progetti attraverso il processo di sviluppo ha risvegliato in me una
+            chiara consapevolezza della direzione che desideravo prendere nel
+            mio percorso professionale. Ho completato
+            il corso da full Stack Web Developer di <span class="color-purple">Boolean</span> e sono stata selezionata
+            per il corso di <span class="color-purple">Experis su Java</span>. Ora, con entusiasmo e dedizione, sono pronta
+            a mettere in pratica le mie competenze, affrontare nuove sfide e crescere in un ambiente lavorativo dinamico.
+          </p>
+          <div class="flex items-center justify-between py-5">
 
-              <button @mouseover="showBounce2 = true" @mouseleave="showBounce2 = false">Scarica CV
-                <i v-show="!showBounce2" class="fa-solid fa-download"></i>
-                <i v-show="showBounce2" class="fa-solid fa-download fa-bounce"></i></button>
-            </a>
+            <div class="icons-container pr-5">
+              <a href="https://www.linkedin.com/in/arianna-costanzo-6267a0233/">
+                <i class="fa-brands fa-linkedin color-purple"></i>
+              </a>
+              <a href="https://github.com/ariannacostanzo">
+                <i class="fa-brands fa-square-github color-purple"></i>
+              </a>
+            </div>
+
+            <div class="buttons-container flex flex-col md:flex-row gap-4">
+              <a href="mailto:costanzo.arianna@outlook.it" @mouseover="showBounce1 = true" class="text-center"
+                @mouseleave="showBounce1 = false">Contattami
+                <i v-show="!showBounce1" class="fa-solid fa-id-card-clip"></i>
+                <i v-show="showBounce1" class="fa-solid fa-id-card-clip fa-bounce"></i>
+              </a>
+              <a :href="cvLink" download class="text-center">
+
+                <button @mouseover="showBounce2 = true" @mouseleave="showBounce2 = false">Scarica CV
+                  <i v-show="!showBounce2" class="fa-solid fa-download"></i>
+                  <i v-show="showBounce2" class="fa-solid fa-download fa-bounce"></i></button>
+              </a>
+            </div>
           </div>
         </div>
+
+
       </div>
 
     </div>
@@ -130,16 +140,12 @@ onBeforeUnmount(() => {
     padding: 2rem;
   }
 
-  figure {
-    max-width: 300px;
-    max-height: 250px;
-    overflow: hidden;
-    border-radius: 5px;
-    flex-basis: 60%;
-  }
+  
   #aboutme-img {
-    width: 200px;
     border-radius: 5px;
+    height: 250px;
+    object-position: top center;
+    object-fit: cover;
   }
 
   .writing-text {
@@ -174,10 +180,6 @@ onBeforeUnmount(() => {
 
   }
 
-  .info-about-me {
-    flex-basis: 40%;
-
-  }
 
   h3 {
     font-weight: bold;

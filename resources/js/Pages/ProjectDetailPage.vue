@@ -42,7 +42,7 @@ const props = defineProps({
       
       <div class="description">
         
-        <h3 class="color-green">Overview</h3>
+        <h3 class="color-green">Riepilogo</h3>
         <p v-html="project.description"></p>
       </div>
       
@@ -101,8 +101,17 @@ const props = defineProps({
   }
   
   img {
-    width: 80%;
+    // width: 80%;
+    max-height: 700px;
     margin: 0 auto;
+    object-fit: contain;
+  }
+
+  @media screen and (min-width: 758px) {
+    img {
+        width: 80%;
+        margin: 0 auto;
+      }
   }
   
   h3 {

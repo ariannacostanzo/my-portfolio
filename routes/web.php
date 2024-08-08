@@ -10,16 +10,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\ContactFormController;
 
 Route::post('/contact', [ContactFormController::class, 'send']);
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 
 Route::get('/', function () {
     $skills = Skill::all();
@@ -31,9 +22,7 @@ Route::get('/', function () {
     ]);
 })->name('welcome');
 
-// Route::inertia('projectDetailPage', 'ProjectDetailPage')->name('projectDetail');
 
-//quello giusto
 Route::get('projectDetailPage/{id}', function ($id) {
     $project = Project::with('images')->findOrFail($id);
     return Inertia::render('ProjectDetailPage', [
@@ -45,21 +34,21 @@ Route::get('projectDetailPage/{id}', function ($id) {
 
 // Route::resource('projects', ProjectController::class);
 
-Route::get('/dashboard', function () {
-    $projects = Project::all();
-    return Inertia::render('Dashboard', compact('projects'));
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     $projects = Project::all();
+//     return Inertia::render('Dashboard', compact('projects'));
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 //Projects
-Route::get('/editProject/{id}', [ProjectController::class, 'edit'])->middleware(['auth', 'verified'])->name('editproject');
-Route::get('/createProject', [ProjectController::class, 'create'])->middleware(['auth', 'verified'])->name('createproject');
-Route::delete('/deleteProject/{project}', [ProjectController::class, 'destroy'])->middleware(['auth', 'verified'])->name('deleteproject');
+// Route::get('/editProject/{id}', [ProjectController::class, 'edit'])->middleware(['auth', 'verified'])->name('editproject');
+// Route::get('/createProject', [ProjectController::class, 'create'])->middleware(['auth', 'verified'])->name('createproject');
+// Route::delete('/deleteProject/{project}', [ProjectController::class, 'destroy'])->middleware(['auth', 'verified'])->name('deleteproject');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__.'/auth.php';

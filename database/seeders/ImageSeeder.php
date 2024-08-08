@@ -179,6 +179,67 @@ class ImageSeeder extends Seeder
             [
                 'image_path' => 'images/Projects/dc-comics/dc-comics (9).png'
             ],
+            [
+                'image_path' => 'images/Projects/progetti-in-python/progetti-in-python (1).png'
+            ],
+            [
+                'image_path' => 'images/Projects/progetti-in-python/progetti-in-python (2).png'
+            ],
+            [
+                'image_path' => 'images/Projects/progetti-in-python/progetti-in-python (3).png'
+            ],
+            [
+                'image_path' => 'images/Projects/progetti-in-python/progetti-in-python (4).png'
+            ],
+            [
+                'image_path' => 'images/Projects/progetti-in-python/progetti-in-python (5).png'
+            ],
+            [
+                'image_path' => 'images/Projects/progetti-in-python/progetti-in-python (6).png'
+            ],
+            [
+                'image_path' => 'images/Projects/progetti-in-python/progetti-in-python (7).png'
+            ],
+            [
+                'image_path' => 'images/Projects/progetti-in-python/progetti-in-python (8).png'
+            ],
+            [
+                'image_path' => 'images/Projects/progetti-in-python/progetti-in-python (9).png'
+            ],
+            [
+                'image_path' => 'images/Projects/progetti-in-python/progetti-in-python (10).png'
+            ],
+            [
+                'image_path' => 'images/Projects/progetti-in-python/progetti-in-python (11).png'
+            ],
+            [
+                'image_path' => 'images/Projects/progetti-in-python/progetti-in-python (12).png'
+            ],
+            [
+                'image_path' => 'images/Projects/progetti-in-python/progetti-in-python (13).png'
+            ],
+            [
+                'image_path' => 'images/Projects/progetti-in-python/progetti-in-python (14).png'
+            ],
+            [
+                'image_path' => 'images/Projects/spotify/spotify (1).png'
+            ],
+            [
+                'image_path' => 'images/Projects/spotify/spotify (2).png'
+            ],
+            [
+                'image_path' => 'images/Projects/spotify/spotify (3).png'
+            ],
+            [
+                'image_path' => 'images/Projects/spotify/spotify (4).png'
+            ],
+            [
+                'image_path' => 'images/Projects/spotify/spotify (5).png'
+            ],
+            [
+                'image_path' => 'images/Projects/spotify/spotify (6).png'
+            ],
+            
             
             
         ];

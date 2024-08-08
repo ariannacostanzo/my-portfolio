@@ -73,7 +73,7 @@ const submitForm = () => {
                         <ButtonWithIcon label="Invia" />
                     </button>
                 </div>
-                
+
                 <div v-show="flash" class="pt-7 color-purple">
                     {{ flash.success }}
                 </div>
@@ -82,14 +82,17 @@ const submitForm = () => {
         </div>
         <div class="right-content">
 
+            <div class="lg:flex items-center justify-end gap-20">
 
-            <div class="text-center lg:text-end">
-                <h4 class="color-green md-5 ">Email</h4>
-                <a href="mailto:costanzo.arianna@outlook.it">costanzo.arianna@outlook.it</a>
-            </div>
-            <div class="text-center lg:text-end">
-                <h4 class="color-green my-5">Numero di telefono</h4>
-                <p>(+39) 3274436674</p>
+                <div class="text-center lg:text-end">
+
+                    <h4 class="color-green ">Numero di telefono</h4>
+                    <p>(+39) 3274436674</p>
+                </div>
+                <div class="text-center lg:text-end">
+                    <h4 class="color-green md-5 ">Email</h4>
+                    <a href="mailto:costanzo.arianna@outlook.it">costanzo.arianna@outlook.it</a>
+                </div>
             </div>
             <div class="text-center lg:text-end">
                 <h4 class="color-green my-5">Indirizzo</h4>
@@ -97,7 +100,7 @@ const submitForm = () => {
 
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101303.19542571901!2d14.995117417087291!3d37.49081874567513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1313e2dd761525b5%3A0x58fe876151c83cf0!2sCatania%20CT!5e0!3m2!1sit!2sit!4v1720219451525!5m2!1sit!2sit"
-                        width="300" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
@@ -109,9 +112,6 @@ const submitForm = () => {
                     </a>
                     <a href="https://github.com/ariannacostanzo">
                         <i class="fa-brands fa-square-github color-purple"></i>
-                    </a>
-                    <a href="https://www.instagram.com/aryalp35/">
-                        <i class="fa-brands fa-square-instagram color-purple"></i>
                     </a>
                 </div>
 
@@ -183,11 +183,18 @@ const submitForm = () => {
     
   }
 
-  @media screen and (min-width: 1024px) {
-    .email-form {
-        height: 80%;
-    }
+  iframe {
+    width: 450px;
+    height: 350px;
   }
+
+//   @media screen and (min-width: 1024px) {
+//     .email-form {
+//         height: 100%;
+//     }
+//   }
+
+
 </style>
 
 <!-- sistemare il flash message  -->
