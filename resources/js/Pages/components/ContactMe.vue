@@ -49,6 +49,20 @@ const submitForm = () => {
                         semplicemente
                         dire
                         ciao, sentiti libero di contattarmi.</p>
+                        <!-- per deployare  -->
+                    <!-- <p>Ecco a voi il mio PRIMO SITO WEB: il mio portfolio personale!
+
+                        Qui potete esplorare i miei progetti, ordinati cronologicamente dal più recente al meno recente,
+                        e scoprire di più su di me, sulle mie competenze e sul mio percorso.
+
+                        Il sito sfrutta GitHub come "database" utilizzando le chiamate OctoKit per recuperare i
+                        progetti. Attraverso richieste specifiche per ogni progetto, ottengo tutte le informazioni
+                        necessarie, come immagini, linguaggi di programmazione e altro. Inoltre, ho creato un sistema
+                        basato su un file "status" per includere solo i progetti completati o selezionati nel portfolio
+                        (stato "finish" o "none").
+                        Grazie a questo sistema, ogni volta che pubblico un nuovo progetto su GitHub, basta aggiungere
+                        l’immagine e il file status, e il progetto si aggiorna automaticamente nella sezione "I miei
+                        progetti".</p> -->
                 </div>
                 <div class="mb-3">
                     <div class="mb-3 flex justify-start">

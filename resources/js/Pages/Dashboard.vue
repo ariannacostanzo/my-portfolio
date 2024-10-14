@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { defineProps } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
@@ -85,4 +85,4 @@ const csrfToken = csrfTokenMeta ? csrfTokenMeta.getAttribute('content') : '';
     padding: 5px;
     width: 0;
 }
-</style>
+</style> -->

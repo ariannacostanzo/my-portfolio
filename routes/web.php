@@ -32,23 +32,5 @@ Route::get('projectDetailPage/{id}', function ($id) {
 })->name('projectDetail');
 
 
-// Route::resource('projects', ProjectController::class);
-
-// Route::get('/dashboard', function () {
-//     $projects = Project::all();
-//     return Inertia::render('Dashboard', compact('projects'));
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-
-//Projects
-// Route::get('/editProject/{id}', [ProjectController::class, 'edit'])->middleware(['auth', 'verified'])->name('editproject');
-// Route::get('/createProject', [ProjectController::class, 'create'])->middleware(['auth', 'verified'])->name('createproject');
-// Route::delete('/deleteProject/{project}', [ProjectController::class, 'destroy'])->middleware(['auth', 'verified'])->name('deleteproject');
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
 
 require __DIR__.'/auth.php';
